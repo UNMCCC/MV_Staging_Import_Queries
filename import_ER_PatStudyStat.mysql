@@ -1,0 +1,20 @@
+TRUNCATE er_patstudystat;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\er_PatStudyStat.csv' INTO table er_patstudystat 
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 2 LINES
+(PK_PATSTUDYSTAT,@fkstat,@fkper,@fkstu,@createdate,@creator,@curstat,INFORM_CONSENT_VER,@lastmodby,@lastModDate	,@patstudystatbegdate,@patstudystatenddate,PATSTUDYSTAT_NOTE,@reason,@scrnum,@scrby,SCREENING_OUTCOME)
+SET LAST_MODIFIED_DATE = NULLIF(str_to_date(@lastModDate,"%d-%b-%Y"),"0000-00-00"),
+CREATED_ON = NULLIF(str_to_date(@createdate,"%d-%b-%Y"),"0000-00-00"),
+PATSTUDYSTAT_DATE = NULLIF(str_to_date(@patstudystatbegdate,"%d-%b-%Y"),"0000-00-00"),
+PATSTUDYSTAT_ENDT = NULLIF(str_to_date(@patstudystatenddate,"%d-%b-%Y"),"0000-00-00"),
+FK_CODELST_STAT = NULLIF(@fkstat,' '),
+FK_PER = NULLIF(@fkper,' '),
+FK_STUDY = NULLIF(@fkstu,' '),
+CREATOR = NULLIF(@creator,' '),
+LAST_MODIFIED_BY = NULLIF(@lastmodby,' '),
+CURRENT_STAT = NULLIF(@curstat,' '),
+PATSTUDYSTAT_REASON= NULLIF(@reason,' '),
+SCREEN_NUMBER = NULLIF(@scrnum,' '),
+SCREENED_BY = NULLIF(@scrby,' ')

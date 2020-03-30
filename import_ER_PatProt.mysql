@@ -1,0 +1,33 @@
+TRUNCATE er_patprot;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\er_PatProt.csv' INTO table er_patprot 
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 2 LINES
+(PK_PATPROT,@codeloc,@codeptdth,@codepteval,@codeptevalflag,@codeptineval,@codeptsurv,@pe,@siteenr,@stu,@usr,@userasto,@createdate,@creator,@dod,DEATH_STD_RLTD_OTHER,DMGRPH_REPORTABLE,@consentvers,@lastmodby,@lastModDate,@consign,@consig,@disc,@enrol,PATPROT_NOTES,PATPROT_OTHR_DIS_CODE,PATPROT_PATSTDID,@phys,PATPROT_REASON,@resign1,@resign2,@PATPROT_START,PATPROT_STAT,@treatorg) 
+SET LAST_MODIFIED_DATE=str_to_date(@lastModDate,"%d-%b-%Y"), 
+CREATED_ON=str_to_date(@createdate,"%d-%b-%Y"), 
+DATE_OF_DEATH = NULLIF(str_to_date(@dod,"%d-%b-%Y"),"0000-00-00"), 
+PATPROT_CONSIGNDT = NULLIF(str_to_date(@consig,"%d-%b-%Y"),"0000-00-00"), 
+PATPROT_DISCDT = NULLIF(str_to_date(@disc,"%d-%b-%Y"),"0000-00-00"), 
+PATPROT_ENROLDT = NULLIF(str_to_date(@enrol,"%d-%b-%Y"),"0000-00-00"), 
+PATPROT_RESIGNDT1 = NULLIF(str_to_date(@resing1,"%d-%b-%Y"),"0000-00-00"), 
+PATPROT_RESIGNDT2 = NULLIF(str_to_date(@resing2,"%d-%b-%Y"),"0000-00-00"), 
+PATPROT_START = NULLIF(str_to_date(@start,"%d-%b-%Y"),"0000-00-00"), 
+FK_CODELSTLOC = NULLIF(@codeloc,''),
+FK_CODELST_PTST_DTH_STDREL = NULLIF(@codeptdth,''),
+FK_CODELST_PTST_EVAL = NULLIF(@codepteval,''),
+FK_CODELST_PTST_EVAL_FLAG = NULLIF(@codeptevalflag,''),
+FK_CODELST_PTST_INEVAL = NULLIF(@codeptineval,''),
+FK_CODELST_PTST_SURVIVAL = NULLIF(@codeptsurv,''),
+FK_PER = NULLIF(@pe,''),
+FK_SITE_ENROLLING = NULLIF(@siteenr,''),
+FK_STUDY = NULLIF(@stu,''),
+FK_USER = NULLIF(@usr,''),
+FK_USERASSTO = NULLIF(@userasto,''),
+CREATOR = NULLIF(@creator,''),
+LAST_MODIFIED_BY = NULLIF(@lastmodby,''),
+INFORM_CONSENT_VER = NULLIF(@consentvers,''),
+PATPROT_CONSIGN = NULLIF(@consign,''),
+PATPROT_PHYSICIAN = NULLIF(@phys,''),
+PATPROT_TREATINGORG = NULLIF(@treatorg,'')

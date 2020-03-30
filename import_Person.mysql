@@ -1,0 +1,21 @@
+TRUNCATE person;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\Person.csv' INTO table person 
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 2 LINES
+(PK_PERSON,@fketh,@fkgender,@fkdeathcause,@fkpstat,@fkrace,@fksite,CAUSE_OF_DEATH_OTHER,@createdate,@creator,	@lastmodby,@lastModDate,PAT_FACILITYID,PERSON_ADD_ETHNICITY,PERSON_ADD_RACE,PERSON_ALTID,PERSON_CITY,PERSON_CODE,PERSON_COUNTRY,PERSON_COUNTY,@dod,@dob,PERSON_FNAME,PERSON_LNAME,PERSON_MNAME,PERSON_PHYOTHER,@regby,@regdate,PERSON_STATE,PERSON_ZIP)
+SET LAST_MODIFIED_DATE = NULLIF(str_to_date(@lastModDate,"%d-%b-%Y"),"0000-00-00"),
+CREATED_ON = NULLIF(str_to_date(@createdate,"%d-%b-%Y"),"0000-00-00"),
+CREATOR = NULLIF(@creator,''),
+LAST_MODIFIED_BY = NULLIF(@lastmodby,''),
+FK_CODELST_ETHNICITY = NULLIF(@fketh,' '),	
+FK_CODELST_GENDER = NULLIF(@fkgender,' '),
+FK_CODELST_PAT_DTH_CAUSE = NULLIF(@fkdeathcause,' '),
+FK_CODELST_PSTAT = NULLIF(@fkpstat,' '),
+FK_CODELST_RACE	= NULLIF(@fkrace,' '),
+FK_SITE	= NULLIF(@fksite,' '),
+PERSON_DEATHDT = NULLIF(str_to_date(@dod,"%d-%b-%Y"),"0000-00-00"),
+PERSON_DOB = NULLIF(str_to_date(@dob,"%d-%b-%Y"),"0000-00-00"),
+PERSON_REGDATE = NULLIF(str_to_date(@regdate,"%d-%b-%Y"),"0000-00-00"),
+PERSON_REGBY = NULLIF(@regby,' ')

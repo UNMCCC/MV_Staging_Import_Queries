@@ -1,0 +1,13 @@
+TRUNCATE er_user;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\er_User.csv' INTO table er_user
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 2 LINES(PK_USER,@codejobtype,@codespl,@siteid,@createdate,@creator,@lastmodby,@lastModDate,USR_FIRSTNAME,USR_LASTNAME,@middle,USR_SITEFLAG,USR_STAT,USR_TYPE)
+SET LAST_MODIFIED_DATE=str_to_date(@lastModDate,"%d-%b-%Y"), 
+CREATED_ON=str_to_date(@createdate,"%d-%b-%Y"),
+FK_CODELST_JOBTYPE = NULLIF(@codejobtype,''),
+FK_CODELST_SPL = NULLIF(@codespl,''),
+FK_SITEID = NULLIF(@siteid,''),
+CREATOR = NULLIF(@creator,''),
+LAST_MODIFIED_BY = NULLIF(@lastmodby,'')

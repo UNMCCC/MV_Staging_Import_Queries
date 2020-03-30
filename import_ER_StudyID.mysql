@@ -1,0 +1,13 @@
+TRUNCATE er_studyid;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\er_StudyID.csv' INTO table er_studyid 
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 2 LINES
+(PK_STUDYID,@fkidtype,@fkstu,@createdate,@creator,@lastmodby,@lastModDate,STUDYID_ID)
+SET CREATED_ON = NULLIF(str_to_date(@createdate,"%d-%b-%Y"),"0000-00-00"),
+LAST_MODIFIED_DATE = NULLIF(str_to_date(@lastModDate,"%d-%b-%Y"),"0000-00-00"),
+FK_CODELST_IDTYPE = NULLIF(@fkidtype,' '),
+FK_STUDY= NULLIF(@fkstu,' '),
+CREATOR= NULLIF(@creator,' '),
+LAST_MODIFIED_BY= NULLIF(@lastmodby,' ')

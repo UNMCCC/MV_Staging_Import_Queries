@@ -1,0 +1,13 @@
+TRUNCATE pat_perid;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\Pat_PerID.csv' INTO table pat_perid 
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 2 LINES
+(PK_PERID,@fkidtype,@fkper,@createdate,@creator,@lastmodby,@lastModDate,PERID_ID)
+SET LAST_MODIFIED_DATE = NULLIF(str_to_date(@lastModDate,"%d-%b-%Y"),"0000-00-00"),
+CREATED_ON = NULLIF(str_to_date(@createdate,"%d-%b-%Y"),"0000-00-00"),
+CREATOR = NULLIF(@creator,''),
+LAST_MODIFIED_BY = NULLIF(@lastmodby,''),
+FK_CODELST_IDTYPE = NULLIF(@fkidtype,' '),	
+FK_PER = NULLIF(@fkper,' ')

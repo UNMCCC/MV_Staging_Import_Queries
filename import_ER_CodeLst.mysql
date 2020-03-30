@@ -1,0 +1,10 @@
+TRUNCATE er_codelst;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\er_CodeLst.csv' INTO table er_codelst 
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 2 LINES(PK_CODELST,CODELST_TYPE,CODELST_SUBTYP,CODELST_DESC,@createdate,@creator,@lastmodby,@lastModDate) 
+SET LAST_MODIFIED_DATE=str_to_date(@lastModDate,"%d-%b-%Y"), 
+CREATED_ON=str_to_date(@createdate,"%d-%b-%Y"),
+CREATOR = NULLIF(@creator,''),
+LAST_MODIFIED_BY = NULLIF(@lastmodby,'')
