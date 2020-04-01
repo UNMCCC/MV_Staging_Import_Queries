@@ -4,21 +4,19 @@ FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 2 LINES
-(PK_STUDYSTAT,@fkaprno,@fkaprstat,@fkrevboard,@fkstudystat,@fksite,@fkstudy,@fkdocby,@createdate,@fkcreator,@curstat,@lastmodby,@lastModDate,@outcome,STATUS_TYPE,@assignto,@stdy_stat_dt,@stdy_stat_endt,STUDYSTAT_HSPN,@stdy_stat_meetdt,STUDYSTAT_NOTE,@stdy_stat_validt)
+(PK_STUDYSTAT,@fkrevboard,@fkstudystat,@fksite,@fkstudy,@fkdocby,@createdate,@fkcreator,@curstat,@lastmodby,@lastModDate,@outcome,STATUS_TYPE,@assignto,@stdy_stat_dt,@stdy_stat_endt,@stdy_stat_meetdt,STUDYSTAT_NOTE,@stdy_stat_validt)
 SET LAST_MODIFIED_DATE = NULLIF(str_to_date(@lastModDate,"%d-%b-%Y"),"0000-00-00"),
 CREATED_ON = NULLIF(str_to_date(@createdate,"%d-%b-%Y"),"0000-00-00"),
 STUDYSTAT_DATE = NULLIF(str_to_date(@stdy_stat_dt,"%d-%b-%Y"),"0000-00-00"),
 STUDYSTAT_ENDT = NULLIF(str_to_date(@stdy_stat_endt,"%d-%b-%Y"),"0000-00-00"),
 STUDYSTAT_MEETDT = NULLIF(str_to_date(@stdy_stat_meetdt,"%d-%b-%Y"),"0000-00-00"),
 STUDYSTAT_VALIDT = NULLIF(str_to_date(@stdy_stat_validt,"%d-%b-%Y"),"0000-00-00"),
-FK_CODELST_APRNO = NULLIF(@fkaprno,' '),
-FK_CODELST_APRSTAT = NULLIF(@fkaprstat,' '),
 FK_CODELST_REVBOARD = NULLIF(@fkrevboard,' '),
 FK_CODELST_STUDYSTAT = NULLIF(@fkstudystat,' '),
 FK_SITE = NULLIF(@fksite,' '),
 FK_STUDY = NULLIF(@fkstudy,' '),
 FK_USER_DOCBY = NULLIF(@fkdocby,' '),
-CREATOR = NULLIF(@creator,' '),
+CREATOR = NULLIF(@fkcreator,' '),
 LAST_MODIFIED_BY = NULLIF(@lastmodby,' '),
 CURRENT_STAT = NULLIF(@curstat,' '),
 OUTCOME = NULLIF(@outcome,' '),
