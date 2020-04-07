@@ -1,0 +1,6 @@
+TRUNCATE er_studydiseasesite;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\er_studydiseasesiteN.csv' INTO table er_studydiseasesite
+FIELDS TERMINATED BY ','  
+LINES TERMINATED BY '\r\n'
+(pkstudydiseasesite,FK_STUDY,study_disease_site)
+
