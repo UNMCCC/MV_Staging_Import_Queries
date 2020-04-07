@@ -3,7 +3,7 @@ LOAD DATA local infile 'D:\\MiniVelos\\Sources\\er_Study.csv' INTO table er_stud
 FIELDS TERMINATED BY ','  
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
-IGNORE 2 LINES(PK_STUDY,@autor,@blind,@phase,@purp,@restype,@scope,@sponsor,@tarea,@type,@createdate,@creator,@lastModBy,@lastModDate,NCI_TRIAL_IDENTIFIER,NCT_NUMBER,@actualdate,STUDY_ASSOC,@stucontact,@coord,STUDY_CREATION_TYPE,STUDY_DISEASE_SITE,@div,@dur,STUDY_DURUNIT,@studyenddt,@studybegdt,@invindflag,STUDY_INVIND_NUMBER,STUDY_MAJ_AUTH,@stunsamplesize,STUDY_NUMBER,STUDY_OTHERPRINV,@stuparent,STUDY_PRINV,STUDY_PRODNAME,@stusamplesize,STUDY_SPONSOR,STUDY_SPONSORID,STUDY_TITLE)
+IGNORE 2 LINES(PK_STUDY,@autor,@blind,@phase,@purp,@restype,@scope,@sponsor,@tarea,@type,@createdate,@creator,@lastModBy,@lastModDate,NCI_TRIAL_IDENTIFIER,NCT_NUMBER,@actualdate,@assoc,@stucontact,@coord,STUDY_CREATION_TYPE,STUDY_DISEASE_SITE,@div,@dur,STUDY_DURUNIT,@studyenddt,@studybegdt,@invindflag,STUDY_INVIND_NUMBER,STUDY_MAJ_AUTH,@stunsamplesize,STUDY_NUMBER,STUDY_OTHERPRINV,@stuparent,STUDY_PRINV,STUDY_PRODNAME,@stusamplesize,STUDY_SPONSOR,STUDY_SPONSORID,STUDY_TITLE)
 SET LAST_MODIFIED_DATE = NULLIF(str_to_date(@lastModDate,"%d-%b-%Y"),"0000-00-00"),
 LAST_MODIFIED_BY = NULLIF(@lastModBy,' '),
 CREATED_ON = NULLIF(str_to_date(@createdate,"%d-%b-%Y"),"0000-00-00"),
@@ -19,6 +19,7 @@ STUDY_DIVISION = NULLIF(@div,' '),
 STUDY_INVIND_FLAG = NULLIF(@invindflag,' '),
 STUDY_PARENTID = NULLIF(@stuparent,' '),
 STUDY_COORDINATOR = NULLIF(@coord,' '),
+STUDY_ASSOC = NULLIF(@assoc, ' '),
 FK_AUTHOR =  NULLIF(@author,' '),
 FK_CODELST_BLIND =  NULLIF(@blind,' '),
 FK_CODELST_PHASE=  NULLIF(@phase,' '),
@@ -28,4 +29,5 @@ FK_CODELST_SCOPE =  NULLIF(@scope,' '),
 FK_CODELST_SPONSOR =  NULLIF(@sponsor,' '),
 FK_CODELST_TAREA=  NULLIF(@tarea,' '),
 FK_CODELST_TYPE =  NULLIF(@type,' ')
+
 
