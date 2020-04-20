@@ -1,0 +1,6 @@
+TRUNCATE pat_demog_orien;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\Pat_Demog_ORIEN.csv' INTO table pat_demog_orien
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 2 LINES
