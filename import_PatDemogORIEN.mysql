@@ -4,3 +4,5 @@ FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 2 LINES
+(tccid,@vdob,mrn)
+SET dob = NULLIF(str_to_date(@vdob,"%d-%b-%Y"),"0000-00-00")
