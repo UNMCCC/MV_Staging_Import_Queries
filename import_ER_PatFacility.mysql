@@ -16,7 +16,7 @@ PAT_ACCESSRIGHT = NULLIF(@access,''),
 PATFACILITY_DEFAULT = NULLIF(@facdef,''),
 PATFACILITY_OTHERPROVIDER = NULLIF(@othprov,''),
 PATFACILITY_PROVIDER = NULLIF(@prov,''),
-SET PATFACILITY_REGDATE = NULLIF(str_to_date(@regdate,"%d-%b-%Y"),"0000-00-00")
+PATFACILITY_REGDATE = NULLIF(str_to_date(@regdate,"%d-%b-%Y"),"0000-00-00")
 
 
 
