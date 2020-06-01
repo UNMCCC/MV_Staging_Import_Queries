@@ -1,0 +1,21 @@
+TRUNCATE er_patprot;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\er_PatFacility.csv' INTO table er_PatFacility
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 2 LINES
+(PK_PATFACILITY,@pe,@site,@createdate,@creator,@lastmodby,@lastModDate,@facilityID,@facDef,@othprov,@prov,@regdate) 
+FK_PER  = NULLIF(@pe,''),
+FK_SITE = NULLIF(@site,''),
+SET CREATED_ON=str_to_date(@createdate,"%d-%b-%Y"), 
+CREATOR = NULLIF(@creator,''),
+SET LAST_MODIFIED_DATE=str_to_date(@lastModDate,"%d-%b-%Y"), 
+LAST_MODIFIED_BY = NULLIF(@lastmodby,''),
+PAT_FACILITYID = NULLIF(@facilityID,''),
+PATFACILITY_DEFAULT = NULLIF(@facdef,''),
+PATFACILITY_OTHERPROVIDER = NULLIF(@othprov,''),
+PATFACILITY_PROVIDER = NULLIF(@prov,''),
+SET PATFACILITY_REGDATE = NULLIF(str_to_date(@regdate,"%d-%b-%Y"),"0000-00-00")
+
+
+
