@@ -5,11 +5,11 @@ OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 2 LINES
 (PK_PATFACILITY,@pe,@site,@createdate,@creator,@lastmodby,@lastModDate,@facilityID,@facDef,@othprov,@prov,@regdate) 
-FK_PER  = NULLIF(@pe,''),
+SET FK_PER  = NULLIF(@pe,''),
 FK_SITE = NULLIF(@site,''),
-SET CREATED_ON=str_to_date(@createdate,"%d-%b-%Y"), 
+CREATED_ON=str_to_date(@createdate,"%d-%b-%Y"), 
 CREATOR = NULLIF(@creator,''),
-SET LAST_MODIFIED_DATE=str_to_date(@lastModDate,"%d-%b-%Y"), 
+LAST_MODIFIED_DATE=str_to_date(@lastModDate,"%d-%b-%Y"), 
 LAST_MODIFIED_BY = NULLIF(@lastmodby,''),
 PAT_FACILITYID = NULLIF(@facilityID,''),
 PATFACILITY_DEFAULT = NULLIF(@facdef,''),
