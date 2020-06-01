@@ -1,4 +1,4 @@
-TRUNCATE er_patprot;
+TRUNCATE er_patfacility;
 LOAD DATA local infile 'D:\\MiniVelos\\Sources\\er_PatFacility.csv' INTO table er_PatFacility
 FIELDS TERMINATED BY ','  
 OPTIONALLY ENCLOSED BY '"'
