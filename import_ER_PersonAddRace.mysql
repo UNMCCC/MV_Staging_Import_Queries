@@ -1,0 +1,6 @@
+TRUNCATE er_person_add_race;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\PersonAddRaceN.csv' INTO table er_person_add_race
+FIELDS TERMINATED BY ','  
+LINES TERMINATED BY '\r\n'
+(pkpersonaddrace,fk_person,person_add_race)
+
