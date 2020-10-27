@@ -1,0 +1,16 @@
+TRUNCATE sch_codelst;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\sch_codelst.csv' INTO table sch_codelst 
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 2 LINES
+(
+PK_CODELST,CODELST_TYPE,CODELST_SUBTYP,CODELST_DESC,CODELST_HIDE,CODELST_SEQ,CODELST_MAINT,
+@creator,@lastmodby,@lastModDate,@createdate,FK_ACCOUNT,RID,IP_ADD,CODELST_CUSTOM_COL1,
+CODELST_STUDY_ROLE,CODELST_KIND
+)
+SET
+CREATOR = NULLIF(@creator,''),
+LAST_MODIFIED_BY = NULLIF(@lastmodby,''),
+LAST_MODIFIED_DATE=str_to_date(@lastModDate,"%d-%b-%Y"),
+CREATED_ON=str_to_date(@createdate,"%d-%b-%Y")
