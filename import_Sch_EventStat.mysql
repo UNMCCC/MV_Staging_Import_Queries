@@ -1,0 +1,17 @@
+TRUNCATE sch_eventstat;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\Sch_Eventstat.csv' INTO table sch_eventstat 
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 2 LINES
+(
+	PK_EVENTSTAT,@eventstatdt,EVENTSTAT_NOTES,FK_EVENT,RID,
+	@creator,@lastmodby,@lastModDate,@createdate,IP_ADD,
+	EVENTSTAT,@eventstatenddate
+) 
+SET
+LAST_MODIFIED_DATE=NULLIF(str_to_date(@lastModDate,"%d-%b-%Y"),"0000-00-00"),
+CREATED_ON=str_to_date(@createdate,"%d-%b-%Y"),
+CREATOR=NULLIF(@creator,''),
+LAST_MODIFIED_BY=NULLIF(@lastmodby,''),
+EVENTSTAT_ENDDT=NULLIF(str_to_date(@eventstatenddate,"%d-%b-%Y"),"0000-00-00")
