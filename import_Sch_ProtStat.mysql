@@ -1,0 +1,13 @@
+TRUNCATE sch_protstat;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\sch_protstat.csv' INTO table sch_protstat
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 2 LINES(PK_PROTSTAT,FK_EVENT,PROTSTAT,@protstatdt,
+PROTSTAT_BY,PROTSTAT_NOTE,RID,@creator,@lastmodby,@lastModDate,
+@createdate,IP_ADD,FK_CODELST_CALSTAT) 
+SET LAST_MODIFIED_DATE=NULLIF(str_to_date(@lastModDate,"%d-%b-%Y"),"0000-00-00"),
+PROTSTAT_DT=NULLIF(str_to_date(@protstatdt,"%d-%b-%Y"),"0000-00-00")
+CREATED_ON=str_to_date(@createdate,"%d-%b-%Y"),
+CREATOR = NULLIF(@creator,''),
+LAST_MODIFIED_BY = NULLIF(@lastmodby,'')
