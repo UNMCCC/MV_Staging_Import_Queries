@@ -1,0 +1,8 @@
+TRUNCATE mq_appointments;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\mq_yesterdays_apps.csv' INTO table mq_appointments
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 3 LINES(sch_id,@appdate,activity_desc,@loc, patient_name,provider_initials,mrn) 
+SET app_dttm = NULLIF(str_to_date(@appdate,"%Y-%m-%d %H:%i:%s"),"0000-00-00"),
+location = RTRIM(@loc)

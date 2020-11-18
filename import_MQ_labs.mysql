@@ -1,0 +1,7 @@
+TRUNCATE mq_labs;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\mq_yesterdays_labs.csv' INTO table mq_labs
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 3 LINES(orc_id,mrn,patient_name,@appdate,provider,lab_code,lab_name) 
+SET app_dttm = NULLIF(str_to_date(@appdate,"%Y%m%d"),"0000-00-00")
