@@ -1,5 +1,5 @@
 TRUNCATE sch_eventstat;
-LOAD DATA local infile 'D:\\MiniVelos\\Sources\\Sch_EventUsr.csv' INTO table sch_eventstat 
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\Sch_EventStat.csv' INTO table sch_eventstat 
 FIELDS TERMINATED BY ','  
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
