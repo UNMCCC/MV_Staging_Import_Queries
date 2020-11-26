@@ -1,0 +1,6 @@
+TRUNCATE labs_cpts;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\labs_cpts.csv' INTO table labs_cpts
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES(cpt,cpt_additional,labname_tricore,labname_mq,labdesc) ;
