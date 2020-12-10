@@ -1,4 +1,4 @@
-TRUNCATE mq_chemos
+TRUNCATE mq_chemos;
 LOAD DATA local infile 'D:\\MiniVelos\\Sources\\mq_yesterdays_chemos.csv' INTO table mq_chemos
 FIELDS TERMINATED BY ','  
 OPTIONALLY ENCLOSED BY '"'
