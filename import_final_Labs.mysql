@@ -1,0 +1,6 @@
+truncate ref_labs_cpts;
+LOAD DATA local infile 'D:\\MiniVelos\\Sources\\final_labs_cpt_merged_toGP.csv' INTO table ref_labs_cpts
+FIELDS TERMINATED BY ','  
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES(cpt,labname_mq,labdesc,labname_tricore,cpt_additional,map_status,lc_idx) ;
