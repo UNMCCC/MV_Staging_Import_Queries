@@ -1,5 +1,5 @@
 TRUNCATE mq_chemos;
-LOAD DATA local infile 'D:\\MiniVelos\\Sources\\mq_yesterdays_chemos.csv' INTO table mq_chemos
+LOAD DATA local infile 'D:\\MiniVelos\\SourcesT\\mq_yesterdays_chemos.csv' INTO table mq_chemos
 FIELDS TERMINATED BY ','  
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
