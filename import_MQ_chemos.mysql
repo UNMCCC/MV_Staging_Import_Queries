@@ -3,5 +3,5 @@ LOAD DATA local infile 'D:\\MiniVelos\\Sources\\mq_yesterdays_chemos.csv' INTO t
 FIELDS TERMINATED BY ','  
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
-IGNORE 3 LINES(orc_id,mrn,patient_name,@appdate,provider,drug_name,cycle_number,cycle_day,delayed) 
+IGNORE 3 LINES(orc_id,mrn,patient_name,@appdate,provider,drug_name,cycle_number,cycle_day,dlyd) 
 SET app_dttm = NULLIF(str_to_date(@appdate,"%Y%m%d"),"0000-00-00")
