@@ -20,5 +20,5 @@ CREATOR = NULLIF(@fkcreator,' '),
 LAST_MODIFIED_BY = NULLIF(@lastmodby,' '),
 CURRENT_STAT = NULLIF(@curstat,' '),
 OUTCOME = NULLIF(@outcome,' '),
-STUDYSTAT_ASSIGNEDTO = NULLIF(@assignto,' ')
+STUDYSTAT_ASSIGNEDTO = NULLIF(@assignto,' '),
 STUDYSTAT_HSPN = NULLIF(@HSPN, ' ')
