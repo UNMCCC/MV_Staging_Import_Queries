@@ -4,7 +4,7 @@ FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 2 LINES
-(PK_PERSON,@fketh,@fkgender,@fkdeathcause,@fkpstat,@fkrace,@fksite,@causeDthOth,@createdate,@creator,	@lastmodby,@lastModDate,@facid,@addEth,@addRace,@city,@pcode,@country,@county,@dod,@dob,@first,@last,@mid,@regby,@regdate,@state,@zip)
+(PK_PERSON,@fketh,@fkgender,@fkdeathcause,@fkpstat,@fkrace,@fksite,@causeDthOth,@createdate,@creator,	@lastmodby,@lastModDate,@facid,@addEth,@addRace,@city,@pcode,@country,@county,@dod,@dob,@first,@last,@mid,@regby,@regdate,@state,@zip,@address1,@address2)
 SET LAST_MODIFIED_DATE = NULLIF(str_to_date(@lastModDate,"%d-%b-%Y"),"0000-00-00"),
 CREATED_ON = NULLIF(str_to_date(@createdate,"%d-%b-%Y"),"0000-00-00"),
 CREATOR = NULLIF(@creator,''),
@@ -31,4 +31,6 @@ PERSON_FNAME = NULLIF(@first,''),
 PERSON_LNAME = NULLIF(@last,''),
 PERSON_MNAME = NULLIF(@mid,''),
 PERSON_STATE = NULLIF(@state,''), 
-PERSON_ZIP = NULLIF(@zip,'')
+PERSON_ZIP = NULLIF(@zip,''),
+PERSON_ADDRESS1 = NULLIF(@address1,''),
+PERSON_ADDRESS2 = NULLIF(@address2,'')
